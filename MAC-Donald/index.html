@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #navbar{
+    display: flex;
+    gap: 20px;
+    margin-top: -5px;
+    padding: 0px 30px 0px 30px; 
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid blck;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    background-color: red;
+}
+        #Mac{
+            padding: 10px;
+            border: 1px solid red;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 0px;
+            color:black;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #logo{
+            height: 40px;
+            width: 60px;
+            box-shadow: none;
+        }
+        #menu{
+            text-align: center;
+            width: 60%;
+            margin: auto;
+        }
+        img{
+            height: 200px;
+            width: 220px;
+            padding: 20px;
+            border: 1px solid gren;
+            /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; */
+        }
+        #order{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 30px;
+            width: 100%;
+            margin: auto;
+
+        }
+        #order > div{
+            padding: 30px;
+            text-align: center;
+            font-size: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border: 1px solid re;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        }
+        #btn{
+            margin-bottom: 0px;
+            padding: 5px 20px ;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <img id=logo src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/1200px-McDonald%27s_Golden_Arches.svg.png">
+       
+        <button id="Mac">Place Order</button>
+    </div>
+    <div id="menu">
+        <h1>McDonald's Menu</h1>
+        <h3>Featured Favorites</h3>
+        <div id="display">
+
+        </div>
+        <div id="order"></div>
+       
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    var data = [
+        {
+            img : "https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-spicy-crispy-chicken-sandwich:1-4-product-tile-desktop" ,
+            name : "Spicy Crispy Chicken" ,
+        },
+        {
+            img  :"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Big-Mac-1:1-4-product-tile-desktop",
+            name :"Big Mac", 
+        },
+        {
+            img  :"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Chicken-McNuggets-4pc-1:1-4-product-tile-desktop",
+            name :"Chicken McNuggets", 
+        },
+        {
+            img  :"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-fries-small:1-4-product-tile-desktop",
+            name :"World Famous Fries", 
+        },
+        {
+            img  :"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Quarter-Pounder-with-Cheese-1:1-4-product-tile-desktop",
+            name :"Quarter Ponder with cheese", 
+        },
+        {
+            img  :"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Premium-Roast-Iced-Coffee-Medium:1-4-product-tile-desktop",
+            name :"Iced Coffee", 
+        },
+        {
+            img  :"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Egg-McMuffin-1:1-4-product-tile-desktop",
+            name :"Egg McMuffin", 
+        },
+        {
+            img  :"https://s7d1.scene7.com/is/image/mcdonalds/t-mcdonalds-Sausage-Burrito-1:1-4-product-tile-desktop",
+            name :"Sausage Burrito", 
+        }
+        ]
+
+ 
+        data.forEach(function(el){
+           
+            var total = document.createElement("div")
+            var img = document.createElement("img")
+            img.src = el.img 
+            var name = document.createElement("p")
+            name.innerText = el.name
+            var  button = document.createElement("button")
+            button.innerText = "ADD"
+            button.id = "btn"
+            
+            button.addEventListener("click",function(){
+                myfun(el)
+            
+            })
+            total.append(img,name,button)
+            document.querySelector("#order").append(total)
+         
+            
+        })
+       
+        
+        var orders =  [];
+       var no =[]
+       
+       function myfun(el){
+   
+                  document.querySelector("#Mac").addEventListener("click",next)
+  //  console.log(i)
+           
+           event.preventDefault()
+         
+           orders.push(el)
+           console.log(orders)
+           localStorage.setItem("orders",JSON.stringify(orders))
+          function next(orders){
+              window.location.href="Order.html"
+        
+        }
+       }
+    
+      
+    
+   
+//      function next(orders){
+//          console.log(orders)
+//        if(orders==""){
+//            alert("Please add some items")
+//        }
+//        else if(orders!==null){
+//            //window.location.href="Order.html"
+//    //alert("Please add some items")
+//        }
+//      }
+    
+
+    //    document.querySelector("#Mac").addEventListener("click",ordered)
+       
+        
+//    function checkContent() {
+//     //checking content logic
+//     event.preventDefault()
+//     var arr= JSON.parse(localStorage.getItem("orders")) || []
+//     if(arr==""){
+//         return false
+//     }
+//     else{
+//         return true;
+//     }
+    
+//   }
+
+//   let content_promise = new Promise(function (resolve, reject) {
+//     //if content is loaded, resolve
+//     //if content is not loaded, reject
+
+//     let content = checkContent();
+
+//     setTimeout(function () {
+//       if (content) {
+//         //promise is resolved
+
+//         resolve("order confrim")
+
+        
+//       } else {
+//         //promise is rejected
+
+//         reject('order fail');
+//       }
+//     }, 1000);
+//   });
+
+  //is it time to grab the promise value?
+  //how - .then and .catch
+
+//   content_promise.then(function (value) {
+//     image.src = 'https://media0.giphy.com/media/Q81NcsY6YxK7jxnr4v/200w.webp?cid=ecf05e47du9rfrb5n1wqylpwka83yq4zksqob66dao6h9zsx&rid=200w.webp&ct=g';
+//   });
+
+//   content_promise.catch(function (err) {
+//     image.src = 'https://media0.giphy.com/media/kEtm4mSTbxvH7j3uCu/200w.webp?cid=ecf05e47zh8k86efe9ahg0hxr3vzcy7e29olzq7bo955n71m&rid=200w.webp&ct=g';
+//   });
+
+//       var img ="https://31.media.tumblr.com/tumblr_lxtp9eNmIr1qi494to1_500.gif"
+</script>

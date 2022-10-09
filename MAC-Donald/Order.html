@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+            #navbar1{
+        display: flex;
+        gap: 20px;
+        padding: 20px; 
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid blck;
+        box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+        background-color: red;
+    }
+img+a>button{
+            padding: 5px;
+            border: 1px solid red;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: px;
+            color:black;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #logo{
+            height: 35px;
+            width: 50px;
+            box-shadow: none;
+        }
+        #menu{
+            text-align: center;
+            width: 60%;
+            margin: auto;
+        }
+        
+        h1{
+            text-align: center;
+            text-decoration:underline;
+        }
+        #orderno{
+            text-align: center;
+            
+        }
+         #foodorder{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 30px;
+            width: 80%;
+            margin: auto;
+
+        }
+        #foodorder > div{
+            padding: 30px;
+            text-align: center;
+            font-size: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            border: 1px solid re;
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar1">
+        <img id=logo src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/1200px-McDonald%27s_Golden_Arches.svg.png">
+       
+        <a href="index.html"><button id="Mac">Back to Menu</button></a>
+    </div>
+    
+    <h1>Ordered Food</h1>
+
+    <h3 id="orderno"></h3>
+    <div id="foodorder"></div>
+</body>
+</html>
+
+<script>
+    var orderdata = JSON.parse(localStorage.getItem("orders"))
+   var i;
+    
+   orderdata.forEach(function(el){
+    
+    var total = document.createElement("div")
+            var img = document.createElement("img")
+            img.src = el.img 
+            var name = document.createElement("p")
+            name.innerText = el.name  
+            total.append(img,name)
+            document.querySelector("#foodorder").append(total)
+            
+           
+            
+        });
+        let j;
+       tim()
+        function tim(){
+            let abc= Math.floor(Math.random()*100);
+
+            var orderno = document.querySelector("#orderno").innerText = "Order No #" + abc
+           
+        }
+       
+    myfun()
+   function myfun(){
+   setTimeout(() => {
+      alert("Order Confirm Please wait for 10 second to get the food")
+   },1000)
+   myfun2()
+}
+
+function myfun2(){
+
+    setTimeout(() => {
+      
+     
+      alert("Food is Ready Thank You")
+   },10000)
+   
+}
+
+</script>
